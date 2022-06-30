@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>api-bibliochat</name>
+    </assembly>
+    <members>
+        <member name="M:api_bibliochat.Controllers.ClienteController.Get(System.String,System.String,System.Int32,System.Int32,System.String)">
+               /// <summary>
+            Este enpoint lista todo los registros de la tabla rol.
+            </summary>
+            <param name="columna"></param>
+            <param name="nombre"></param>
+            <param name="offset"></param>
+            <param name="limit"></param>
+            <param name="sort"></param>
+            
+            <returns></returns>
+        </member>
+        <member name="M:api_bibliochat.Controllers.FracesController.Get(System.String,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Este enpoint lista todo los registros de la tabla rol.
+            </summary>
+            <param name="columna"></param>
+            <param name="nombre"></param>
+            <param name="offset"></param>
+            <param name="limit"></param>
+            <param name="sort"></param>
+            
+            <returns></returns>
+        </member>
+        <member name="M:api_bibliochat.Controllers.IntencionesController.Get(System.String,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Este enpoint lista todo los registros de la tabla rol.
+            </summary>
+            <param name="columna"></param>
+            <param name="nombre"></param>
+            <param name="offset"></param>
+            <param name="limit"></param>
+            <param name="sort"></param>
+            
+            <returns></returns>
+        </member>
+        <member name="M:api_bibliochat.Controllers.RolesController.Get(System.String,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Este enpoint lista todo los registros de la tabla rol.
+            </summary>
+            <param name="columna"></param>
+            <param name="nombre"></param>
+            <param name="offset"></param>
+            <param name="limit"></param>
+            <param name="sort"></param>
+            
+            <returns></returns>
+        </member>
+        <member name="M:api_bibliochat.Controllers.UsuariosController.Get(System.String,System.String,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Este enpoint lista todo los registros de la tabla rol.
+            </summary>
+            <param name="rol"></param>
+            <param name="columna"></param>
+            <param name="nombre"></param>
+            <param name="offset"></param>
+            <param name="limit"></param>
+            <param name="sort"></param>
+            
+            <returns></returns>
+        </member>
+    </members>
+</doc>
