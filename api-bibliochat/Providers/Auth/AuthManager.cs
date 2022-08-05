@@ -250,8 +250,13 @@ namespace api_bibliochat.Providers.Repositories
                     var id = result.message.Split("-")[1];
                     result.message = result.message.Split("-")[0];
                     var token = _jWTManager.generateJwtToken(id, 1).Token;
-
+                    string query2 = "CALL sp_obtener_usuario(" + id + ")";
+                    var resp = await this.context.Usuarios.FromSqlRaw(query2).ToListAsync();
+                    UsuarioEntity bot = resp.FirstOrDefault();
+                    bot.Id = Encript64.EncryptString(bot.Id);
+                    bot.rol = Encript64.EncryptString(bot.rol);
                     result.data = new Dictionary<string, dynamic>{
+                     {"bot",bot },
                     { "token",token }
 
                 };
