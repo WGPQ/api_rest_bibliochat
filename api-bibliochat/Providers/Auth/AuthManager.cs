@@ -39,13 +39,13 @@ namespace api_bibliochat.Providers.Repositories
         }
 
 
-        public async Task<ResultadoLogin> Autenticacion(LoginParametros entiti)
+        public async Task<ResultadoLogin> Autenticacion(LoginParametros entity)
         {
             List<ResultadoLogin> result;
             ResultadoLogin resp = new ResultadoLogin();
             try
             {
-                var query = "CALL sp_login ('" + entiti.correo + "','" + entiti.clave + "')";
+                var query = "CALL sp_login ('" + entity.correo + "','" + entity.clave + "')";
 
                 result = await this.context.Login.FromSqlRaw(query).ToListAsync();
                 resp = result.FirstOrDefault();

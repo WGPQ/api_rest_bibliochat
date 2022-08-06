@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace api_bibliochat.Controllers
 {
-    [Route("api/login")]
+    [Route("api/auth")]
     [ApiController]
     [Authorize]
     public class LoginController : ControllerBase
@@ -26,6 +26,7 @@ namespace api_bibliochat.Controllers
         }
         [AllowAnonymous]
         [HttpPost]
+        [Route("login/portal")]
         public Task<ResultadoLogin> Login(LoginParametros parametros)
         {
             try
@@ -86,20 +87,28 @@ namespace api_bibliochat.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [Route("auth/chatbot")]
-        public Task<ResultadoEntity> AuthBot(ParametroCorreoEntity parametro)
+        [Route("login/chatbot")]
+        public Task<ResultadoLogin> AuthBot(LoginParametros parametro)
         {
+            try
+            {
+                return data.AuthRepository.Autenticacion(parametro);
+            }
+            catch (System.Exception)
+            {
 
-            return data.AuthRepository.AutenticacionChat(parametro.correo);
+                throw new System.Exception("Ocurrio un error");
+            }
+         
         } 
         
-        [HttpPost]
-        [AllowAnonymous]
-        [Route("auth/cliente")]
-        public Task<ResultadoEntity> AuthCliente(ParametroCorreoEntity parametro)
-        {
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[Route("auth/cliente")]
+        //public Task<ResultadoEntity> AuthCliente(ParametroCorreoEntity parametro)
+        //{
 
-            return data.AuthRepository.AutenticacionCliente(parametro.correo);
-        }
+        //    return data.AuthRepository.AutenticacionCliente(parametro.correo);
+        //}
     }
 }

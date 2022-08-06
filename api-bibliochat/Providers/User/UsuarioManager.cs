@@ -150,7 +150,7 @@ namespace api_bibliochat.Providers.Repositories
             {
                 string createBy = _jWTManager.verificarToken(token);
                 entity.rol = Encript64.DecryptString(entity.rol);
-                entity.clave = int.Parse(entity.rol) != 5 ? generarContraseñaTemporal() : "";
+                entity.clave = int.Parse(entity.rol) != 4 ? generarContraseñaTemporal() : "";
                 string query = "CALL sp_insertar_usuario ('" + entity.nombres + "','" + entity.apellidos + "','" + entity.telefono + "','" + entity.correo + "','" + entity.clave + "',''," + entity.rol + "," + createBy + ")";
 
                 var list = await this.context.Respuesta.FromSqlRaw(query).ToListAsync();

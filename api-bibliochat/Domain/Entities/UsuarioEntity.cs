@@ -12,8 +12,9 @@ namespace api_bibliochat.Domain.Entities
         [Required(ErrorMessage ="Los nombres son requeridos")]
         public string nombres { get; set; }
 
-        [Required(ErrorMessage = "Los apellidos son requeridos")]
+        //[Required(ErrorMessage = "Los apellidos son requeridos")]
         public string apellidos { get; set; }
+        public string nombre_completo { get; set; }
 
         //[Required(ErrorMessage = "El telefono es requerido")]
         public string telefono { get; set; }

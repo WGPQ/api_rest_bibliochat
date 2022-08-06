@@ -10,7 +10,7 @@ namespace api_bibliochat.Domain.Entities
         [Required(ErrorMessage = "El correo es requerido")]
         public string correo { get; set; }
 
-        [Required(ErrorMessage = "La clave de acceso es requerida")]
+        //[Required(ErrorMessage = "La clave de acceso es requerida")]
         public string clave { get; set; }
 
     }
