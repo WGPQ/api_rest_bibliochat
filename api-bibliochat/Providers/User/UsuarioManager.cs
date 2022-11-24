@@ -38,15 +38,15 @@ namespace api_bibliochat.Providers.Repositories
             {
                 string idUser = _jWTManager.verificarToken(token);
                 entity.Id = Encript64.DecryptString(entity.Id);
-                entity.rol = Encript64.DecryptString(entity.rol);
-                string query = "CALL sp_actualizar_usuario (" + entity.Id + ",'" + entity.nombres + "','" + entity.apellidos + "','" + entity.telefono + "','" + entity.correo + "'," + entity.activo + ",''," + entity.rol + "," + idUser + ")";
+                entity.id_rol = Encript64.DecryptString(entity.id_rol);
+                string query = "CALL sp_actualizar_usuario (" + entity.Id + ",'" + entity.nombres + "','" + entity.apellidos + "','" + entity.telefono + "','" + entity.correo + "'," + entity.activo + ",''," + entity.id_rol + "," + idUser + ")";
                 var list = await this.context.Respuesta.FromSqlRaw(query).ToListAsync();
                 result = list.FirstOrDefault();
                 if (result.exito)
                 {
                     result.data = entity;
                     entity.Id = entity.Id = Encript64.EncryptString(entity.Id);
-                    entity.rol = Encript64.EncryptString(entity.rol);
+                    entity.id_rol = Encript64.EncryptString(entity.id_rol);
                 }
 
             }
@@ -84,48 +84,20 @@ namespace api_bibliochat.Providers.Repositories
 
         public bool SendEmail(MailEntity entiti)
         {
-            /* var correo = new MimeMessage();
-             //correo.Sender = MailboxAddress.Parse(mailconfiguracion.Mail);
-             correo.From.Add(MailboxAddress.Parse(mailconfiguracion.Mail));
-             correo.To.Add(MailboxAddress.Parse(entiti.toEmail));
-             correo.Subject = entiti.Subject;
-             var builder = new BodyBuilder();
-             builder.HtmlBody = entiti.body;
-             correo.Body = builder.ToMessageBody();
-             SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-             smtp.EnableSsl = true;
-             smtp.UseDefaultCredentials = false;
-             smtp.Port = 587;
-             smtp.Credentials = new System.Net.NetworkCredential(emailOrigen, password);
-             //using var smtp = new SmtpClient();
-             //smtp.CheckCertificateRevocation = false;
-             //smtp.Connect(mailconfiguracion.Host, 25, SecureSocketOptions.StartTls);
-             //smtp.Authenticate(mailconfiguracion.Mail, mailconfiguracion.Contrasenia);
-             await smtp.SendAsync(correo);
-             smtp.Disconnect(true);*/
 
 
             try
             {
-                //var correo = new MailMessage("compiladorWLC@gmial.com", entiti.toEmail, entiti.Subject, entiti.body);
-
-                //SmtpClient smtp = new SmtpClient(mailconfiguracion.Host);
-                //smtp.EnableSsl = true;
-                //smtp.UseDefaultCredentials = false;
-                //smtp.Port = mailconfiguracion.Puerto;
-                //smtp.Credentials = new System.Net.NetworkCredential(mailconfiguracion.Mail, mailconfiguracion.Contrasenia);
-                //smtp.Send(correo);
-                //smtp.Dispose();
+             
 
                 SmtpClient client = new SmtpClient("smtp-mail.outlook.com");
                 client.Port = 587;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.UseDefaultCredentials = false;
-                NetworkCredential credntial = new NetworkCredential("bibliochatutn@outlook.com", "pods+sdj-{d9*");
+                NetworkCredential credntial = new NetworkCredential("testbiblioteca@outlook.es", "HolaMundo95*");
                 client.EnableSsl = true;
                 client.Credentials = credntial;
-
-                MailMessage message = new MailMessage("bibliochatutn@outlook.com", entiti.toEmail);
+                MailMessage message = new MailMessage("testbiblioteca@outlook.es", entiti.toEmail);
                 message.Subject = entiti.Subject;
                 message.Body = entiti.body;
                 message.IsBodyHtml = true;
@@ -149,9 +121,9 @@ namespace api_bibliochat.Providers.Repositories
             try
             {
                 string createBy = _jWTManager.verificarToken(token);
-                entity.rol = Encript64.DecryptString(entity.rol);
-                entity.clave = int.Parse(entity.rol) != 4 ? generarContraseñaTemporal() : "";
-                string query = "CALL sp_insertar_usuario ('" + entity.nombres + "','" + entity.apellidos + "','" + entity.telefono + "','" + entity.correo + "','" + entity.clave + "',''," + entity.rol + "," + createBy + ")";
+                entity.id_rol = Encript64.DecryptString(entity.id_rol);
+                entity.clave = int.Parse(entity.id_rol) != 4 ? generarContraseñaTemporal() : "";
+                string query = "CALL sp_insertar_usuario ('" + entity.nombres + "','" + entity.apellidos + "','" + entity.telefono + "','" + entity.correo + "','" + entity.clave + "',''," + entity.id_rol + "," + createBy + ")";
 
                 var list = await this.context.Respuesta.FromSqlRaw(query).ToListAsync();
                 resp = list.FirstOrDefault();
@@ -167,12 +139,17 @@ namespace api_bibliochat.Providers.Repositories
                    "<h4> Usuario: </h4> <p> " + entity.correo + " </p>" +
                   "<h4> Clave temporal: </h4> <p> " + entity.clave + "</p>" +
                  "<p> Ingrese al siguiente link: <a href = 'http://localhost:4200/login'> www.bibliochat.com </a></p>";
-                    if (int.Parse(entity.rol) != 4)
+                    if (int.Parse(entity.id_rol) != 4)
                     {
-                        if (!SendEmail(mailEntity))
+                        if (SendEmail(mailEntity))
+                        {
+                            resp.exito = true;
+                            resp.message = "Credenciales enviadas correctamente.";
+                        }
+                        else
                         {
                             resp.exito = false;
-                           resp.message = "Ocurrio un error al enviar las credenciales";
+                            resp.message = "Ocurrio un error al enviar las credenciales, intentolo de nuevo.";
                         }
                     }
                     resp.data = entity;
@@ -227,7 +204,7 @@ namespace api_bibliochat.Providers.Repositories
 
         UsuarioEntity EncriptId(UsuarioEntity usuario)
         {
-            usuario.rol = Encript64.EncryptString(usuario.rol);
+            usuario.id_rol = Encript64.EncryptString(usuario.id_rol);
             usuario.Id = Encript64.EncryptString(usuario.Id);
             return usuario;
         }
@@ -247,7 +224,7 @@ namespace api_bibliochat.Providers.Repositories
                     result.exito = true;
                     result.data = usuario;
                     usuario.Id = Encript64.EncryptString(usuario.Id);
-                    usuario.rol = Encript64.EncryptString(usuario.rol);
+                    usuario.id_rol = Encript64.EncryptString(usuario.id_rol);
                     result.message = "Correcto";
                 }
                 else
@@ -310,15 +287,15 @@ namespace api_bibliochat.Providers.Repositories
             List<RolEntity> roles = new List<RolEntity>();
             try
             {
-                string query1 = "CALL sp_listar_roles('" + listar.columna + "','" + listar.nombre + "'," + listar.offset + "," + listar.limit + ",'" + listar.sort + "')";
-                roles = await this.context.Rol.FromSqlRaw(query1).ToListAsync();
+                //string query1 = "CALL sp_listar_roles('" + listar.columna + "','" + listar.nombre + "'," + listar.offset + "," + listar.limit + ",'" + listar.sort + "')";
+                //roles = await this.context.Rol.FromSqlRaw(query1).ToListAsync();
                 var rolDecrypt = Encript64.DecryptString(rol);
                 string query2 = "CALL sp_listar_usuarios (" + rolDecrypt + ",'" + listar.columna + "','" + listar.nombre + "'," + listar.offset + "," + listar.limit + ",'" + listar.sort + "')";
                 usuarios = await this.context.Usuarios.FromSqlRaw(query2).ToListAsync();
-                if (roles.Count() > 0)
-                {
-                    usuarios = usuarios.Select(c => IdRolToNameRol(c, roles)).ToList();
-                }
+                //if (roles.Count() > 0)
+                //{
+                //    usuarios = usuarios.Select(c => IdRolToNameRol(c, roles)).ToList();
+                //}
             }
             catch (Exception ex)
             {

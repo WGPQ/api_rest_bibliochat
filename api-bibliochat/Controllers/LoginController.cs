@@ -62,11 +62,11 @@ namespace api_bibliochat.Controllers
         }
 
         [HttpGet]
-        [Route("exit")]
-        public async Task<ResultadoEntity> Logout()
+        [Route("logout/{session}")]
+        public async Task<ResultadoEntity> Logout(string session)
         {
             var token = HttpContext.Request.Headers["Authorization"];
-            return await this.data.AuthRepository.Logout(token);
+            return await this.data.AuthRepository.Logout(session, token);
         }
 
         [HttpGet]

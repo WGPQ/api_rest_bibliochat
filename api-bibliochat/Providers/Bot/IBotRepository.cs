@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace api_bibliochat.Providers.Chat
+namespace api_bibliochat.Providers.Bot
 {
-    public interface IChatRepository : ChatUseCase<ChatRequest, MessageEntity, ResultadoEntity, Listar, SendChatEntity> { }
 
+    public interface IBotRepository : BotUseCase<ConfigBotEntity, Listar, ResultadoEntity,DisponibilidadEntity> { }
 }

@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace api_bibliochat.Domain.Entities
 {
-    public class InteracionEntity
+    public class SessionEntity
     {
         [Key]
         public string? Id { get; set; }
-        public string? usuario_created { get; set; }
-        public string? usuario_interacted { get; set; }
-        public string? chat { get; set; }
+
+        public string? id_usuario { get; set; }
+
+        public DateTime? inicio { get; set; }
+        public DateTime? fin { get; set; }
     }
 }

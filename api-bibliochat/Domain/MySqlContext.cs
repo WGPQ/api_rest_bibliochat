@@ -19,6 +19,7 @@ namespace api_bibliochat.Domain
             modelBuilder.Entity<ResultadoLogin>().HasNoKey();
             modelBuilder.Entity<ChatEntity>().HasNoKey();
             modelBuilder.Entity<NuevosMessages>().HasNoKey();
+            modelBuilder.Entity<DisponibilidadEntity>().HasNoKey();
         }
 
         public virtual DbSet<UsuarioEntity> Usuarios { get; set; }
@@ -27,6 +28,7 @@ namespace api_bibliochat.Domain
         public virtual DbSet<ResultadoEntity> Respuesta { get; set; }
         public virtual DbSet<RolEntity> Rol { get; set; }
 
+        public virtual DbSet<ConfigBotEntity> Bot { get; set; }
         public virtual DbSet<ResultadoLogin> Login { get; set; }
 
         public virtual DbSet<IntencionesEntity> Intenciones { get; set; }
@@ -34,7 +36,9 @@ namespace api_bibliochat.Domain
         public virtual DbSet<FracesEntity> Fraces { get; set; }
         public virtual DbSet<MessageEntity> Mensajes { get; set; }
         public virtual DbSet<ChatEntity> Chat { get; set; }
+        public virtual DbSet<DisponibilidadEntity> Disponible { get; set; }
         public virtual DbSet<NuevosMessages> Mensajesnuevos { get; set; }
         public virtual DbSet<InteracionEntity> Interacciones { get; set; }
+        public virtual DbSet<SessionEntity> Sessiones { get; set; }
     }
 }

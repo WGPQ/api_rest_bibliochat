@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace api_bibliochat.Providers
 {
 
-    public interface RolUseCase<T, L, R,Rep> where T : new()
+    public interface BotUseCase<T, L, R,Rep> where T : new()
     {
         Task<R> Listar(L entiti);
 

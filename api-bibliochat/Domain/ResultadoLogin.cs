@@ -11,11 +11,14 @@ namespace api_bibliochat.Domain
 
         public bool exito { get; set; }
 
-        public string id_usuario { get; set; }
+        public string? id_usuario { get; set; }
 
         [NotMapped]
-        public string token { get; set; }
+        public string? id_session { get; set; }
 
-        public string message { get; set; }
+        [NotMapped]
+        public string? token { get; set; }
+
+        public string? message { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace api_bibliochat.Providers.Chat
 {
   
-    public interface ChatUseCase<T, M, R, L> where T : new()
+    public interface ChatUseCase<T, M, R, L,S> where T : new()
     {
         Task<R> Chat(T usuarios, string token);
 
@@ -13,6 +13,11 @@ namespace api_bibliochat.Providers.Chat
 
         Task<R> Mensajes(string chat, L listar);
         Task<R> Interacciones(L listar, string token);
+        Task<R> SessionesByUser(string idUser, L listar);
+
+        Task<R> MessagesBySession(string idSesion);
+
+        Task<R> SendChat(S send);
     }
 
    

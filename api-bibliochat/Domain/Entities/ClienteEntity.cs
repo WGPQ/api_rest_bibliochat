@@ -10,17 +10,17 @@ namespace api_bibliochat.Domain.Entities
     public class ClienteEntity
     {
         [Key]
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         [Required(ErrorMessage = "El nombre son requerido")]
-        public string nombre { get; set; }
+        public string? nombre { get; set; }
 
         [Required(ErrorMessage = "El correo es requerido")]
-        public string correo { get; set; }
-        public string rol { get; set; }
+        public string? correo { get; set; }
+        public string? rol { get; set; }
 
-        public bool conectado { get; set; }
-        public DateTime conectedAt { get; set; }
+        public bool? conectado { get; set; }
+        public DateTime? conectedAt { get; set; }
 
     }
 

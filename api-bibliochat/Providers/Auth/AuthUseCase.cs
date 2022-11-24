@@ -15,7 +15,7 @@ namespace api_bibliochat.Providers
         Task<R2> ActualizarContrasenia(ActualizarPass data, string token);
         Task<R2> VerificarToken(string token);
         Task<R2> VerificarTokenCliente(string token);
-        Task<R2> Logout(string token);
+        Task<R2> Logout(string session,string token);
     }
   
 }

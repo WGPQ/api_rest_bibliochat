@@ -1,4 +1,5 @@
 using api_bibliochat.Providers.Auth;
+using api_bibliochat.Providers.Bot;
 using api_bibliochat.Providers.Chat;
 using api_bibliochat.Providers.Cliente;
 using api_bibliochat.Providers.Intention;
@@ -14,6 +15,7 @@ namespace api_bibliochat.Providers
         IUsuarioRepository UsuarioRepository { get; }
         IClienteRepository ClienteRepository { get; }
         IRolRepository RolRepository { get; }
+        IBotRepository BotRepository { get; }
         IAuthRepository AuthRepository { get; }
         IIntencionRepository IntencionRepository { get; }
         IFraceRepository FraceRepository { get; }

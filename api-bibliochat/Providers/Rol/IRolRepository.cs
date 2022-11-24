@@ -8,5 +8,5 @@ using System.Threading.Tasks;
 namespace api_bibliochat.Providers.Rol
 {
 
-    public interface IRolRepository : RolUseCase<RolEntity, Listar, ResultadoEntity,List<RolEntity>> { }
+    public interface IRolRepository : BotUseCase<RolEntity, Listar, ResultadoEntity,List<RolEntity>> { }
 }

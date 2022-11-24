@@ -2,6 +2,7 @@ using api_bibliochat.Domain;
 using api_bibliochat.Hubs;
 using api_bibliochat.Providers.Auth;
 using api_bibliochat.Providers.Auth.Jwt;
+using api_bibliochat.Providers.Bot;
 using api_bibliochat.Providers.Chat;
 using api_bibliochat.Providers.Cliente;
 using api_bibliochat.Providers.Intention;
@@ -40,6 +41,7 @@ namespace api_bibliochat.Providers
         public IClienteRepository ClienteRepository => new ClienteManager(context, _jWTManager);
         public IAuthRepository AuthRepository => new AuthManager(context, mainconfig, jwtconfig, _jWTManager,_hubContext);
         public IRolRepository RolRepository => new RolManager(context,_jWTManager);
+        public IBotRepository BotRepository => new BotManager(context, _jWTManager);
 
 
         public IIntencionRepository IntencionRepository => new IntencionManager(context,_jWTManager);

@@ -7,8 +7,8 @@ namespace api_bibliochat.Domain.Entities
 {
     public class MailEntity
     {
-        public string toEmail { get; set; }
-        public string Subject { get; set; }
-        public string body { get; set; }
+        public string? toEmail { get; set; }
+        public string? Subject { get; set; }
+        public string? body { get; set; }
     }
 }

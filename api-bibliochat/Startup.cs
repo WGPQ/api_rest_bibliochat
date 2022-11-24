@@ -59,7 +59,7 @@ namespace api_bibliochat
             services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {
                 builder
-                .WithOrigins("http://localhost:4200", "http://192.168.0.1:4200")
+                .WithOrigins("*")
                 .AllowAnyHeader()
                 .AllowAnyMethod();
             }));

@@ -9,14 +9,14 @@ namespace api_bibliochat.Domain.Entities
     public class FracesEntity
     {
         [Key]
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         [Required(ErrorMessage = "La intencion es requerida")]
-        public string intencion { get; set; }
+        public string? intencion { get; set; }
 
         [Required(ErrorMessage = "La frace es requerida")]
-        public string frace { get; set; }
+        public string? frace { get; set; }
 
-        public bool activo { get; set; }
+        public bool? activo { get; set; }
     }
 }

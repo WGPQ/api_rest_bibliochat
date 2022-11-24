@@ -7,10 +7,10 @@ namespace api_bibliochat.Domain.Entities
     {
         public bool exito { get; set; }
 
-        public string message { get; set; }
+        public string? message { get; set; }
 
         [NotMapped]
-        public object data { get; set; }
+        public object? data { get; set; }
 
     }
 }

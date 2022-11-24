@@ -7,6 +7,6 @@ namespace api_bibliochat.Domain.Entities
 {
     public class ActualizarPass
     {
-        public string clave { get; set; }
+        public string? clave { get; set; }
     }
 }

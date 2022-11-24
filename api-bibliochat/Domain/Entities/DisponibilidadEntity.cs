@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace api_bibliochat.Domain.Entities
 {
-    public class ChatEntity
+    public class DisponibilidadEntity
     {
-        public string? id_chat { get; set; }
+        public bool? disponibilidad { get; set; }
     }
 }

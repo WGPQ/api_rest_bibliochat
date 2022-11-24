@@ -7,6 +7,6 @@ namespace api_bibliochat.Domain.Entities
 {
     public class ParametroCorreoEntity
     {
-        public string correo { get; set; }
+        public string? correo { get; set; }
     }
 }
