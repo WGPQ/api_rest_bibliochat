@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Tesis\\AppBibliochat\\bibliochat\\api-bibliochat\\api-bibliochat.csproj": {}
+    "/Users/williampuma/Projects/Tesis/api_rest_bibliochat/api-bibliochat/api-bibliochat.csproj": {}
   },
   "projects": {
-    "D:\\Tesis\\AppBibliochat\\bibliochat\\api-bibliochat\\api-bibliochat.csproj": {
+    "/Users/williampuma/Projects/Tesis/api_rest_bibliochat/api-bibliochat/api-bibliochat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Tesis\\AppBibliochat\\bibliochat\\api-bibliochat\\api-bibliochat.csproj",
+        "projectUniqueName": "/Users/williampuma/Projects/Tesis/api_rest_bibliochat/api-bibliochat/api-bibliochat.csproj",
         "projectName": "api-bibliochat",
-        "projectPath": "D:\\Tesis\\AppBibliochat\\bibliochat\\api-bibliochat\\api-bibliochat.csproj",
-        "packagesPath": "C:\\Users\\William\\.nuget\\packages\\",
-        "outputPath": "D:\\Tesis\\AppBibliochat\\bibliochat\\api-bibliochat\\obj\\",
+        "projectPath": "/Users/williampuma/Projects/Tesis/api_rest_bibliochat/api-bibliochat/api-bibliochat.csproj",
+        "packagesPath": "/Users/williampuma/.nuget/packages/",
+        "outputPath": "/Users/williampuma/Projects/Tesis/api_rest_bibliochat/api-bibliochat/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\William\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/williampuma/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -99,10 +93,25 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.osx-x64",
+              "version": "[3.1.29, 3.1.29]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -111,7 +120,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.411\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
         }
       }
     }

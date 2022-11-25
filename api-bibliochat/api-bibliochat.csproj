@@ -30,4 +30,5 @@
     <NoWarn>$(NoWarm);1591</NoWarn>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'SingalDemo' " />
 </Project>

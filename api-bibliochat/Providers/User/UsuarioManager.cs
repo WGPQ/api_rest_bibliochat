@@ -122,7 +122,7 @@ namespace api_bibliochat.Providers.Repositories
             {
                 string createBy = _jWTManager.verificarToken(token);
                 entity.id_rol = Encript64.DecryptString(entity.id_rol);
-                entity.clave = int.Parse(entity.id_rol) != 4 ? generarContraseñaTemporal() : "";
+                entity.clave = int.Parse(entity.id_rol) != 4 ? generarContrasenaTemporal() : "";
                 string query = "CALL sp_insertar_usuario ('" + entity.nombres + "','" + entity.apellidos + "','" + entity.telefono + "','" + entity.correo + "','" + entity.clave + "',''," + entity.id_rol + "," + createBy + ")";
 
                 var list = await this.context.Respuesta.FromSqlRaw(query).ToListAsync();
@@ -241,7 +241,7 @@ namespace api_bibliochat.Providers.Repositories
             return result;
 
         }
-        private string generarContraseñaTemporal()
+        private string generarContrasenaTemporal()
         {
             Random rdn = new Random();
             string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890%$#@";

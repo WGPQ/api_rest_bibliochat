@@ -132,9 +132,8 @@ namespace api_bibliochat.Providers.Bot
         public async Task<DisponibilidadEntity> Disponibilidad()
         {
             DisponibilidadEntity disponibilidad = new DisponibilidadEntity();
-            TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
-            var day = myTI.ToTitleCase(System.DateTime.Now.ToString("dddd"));
-            var hour = System.DateTime.Now.ToString("HH:mm");
+            var day = DateTime.Now.ToString("dddd", new CultureInfo("es-ES"));
+            var hour = DateTime.Now.ToString("HH:mm");
             try
             {
                 string query = "CALL sp_verificar_disponibilidad('" + day + "','" + hour + "')";
